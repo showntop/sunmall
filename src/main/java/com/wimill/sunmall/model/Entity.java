@@ -3,6 +3,7 @@ package com.wimill.sunmall.model;
 import org.springframework.beans.factory.annotation.Autowired;
 
 import java.io.Serializable;
+import java.util.Date;
 
 /**
  * Created by showntop on 2017/3/19.
