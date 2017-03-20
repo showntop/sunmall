@@ -16,8 +16,8 @@
         </commentGenerator>
 
         <jdbcConnection driverClass="com.mysql.jdbc.Driver"
-                        connectionURL="jdbc:mysql://192.168.157.133:3306/springboot" userId="root"
-                        password="1993316">
+                        connectionURL="jdbc:mysql://182.92.82.68:3306/test" userId="root"
+                        password="wimill123">
         </jdbcConnection>
 
         <javaTypeResolver>
@@ -26,7 +26,7 @@
 
         <!-- generate Model -->
         <javaModelGenerator targetPackage="com.wimill.sunmall.model"
-                            targetProject="${entity.target.dir}">
+                            targetProject="/Users/showntop/IdeaProjects/sunmall/src">
             <property name="enableSubPackages" value="true" />
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
@@ -34,21 +34,23 @@
 
 
         <!-- 自动生成xml（但是好像一直没有生成功，反正也不用xml） -->
-        <sqlMapGenerator  targetPackage="com.wimill.sunmall.mapper"
-                          targetProject="${dao.resources.dir}">
+        <sqlMapGenerator  targetPackage="com.wimill.sunmall.xml"
+                          targetProject="/Users/showntop/IdeaProjects/sunmall/src">
             <property name="enableSubPackages" value="true" />
         </sqlMapGenerator>
 
         <!-- 自动生成mapper接口, 可以是 ANNOTATEDMAPPER(注解), XMLMAPPER(xml), MIXEDMAPPER(不知道) -->
-        <javaClientGenerator type="ANNOTATEDMAPPER"
-                             targetPackage="com.wimill.sunmall.mapper" implementationPackage="com.wimill.sunmall.mapper.impl"
-                             targetProject="${entity.target.dir}">
+        <javaClientGenerator type="XMLMAPPER"
+                             targetPackage="com.wimill.sunmall.dao"
+                             targetProject="/Users/showntop/IdeaProjects/sunmall/src">
             <property name="enableSubPackages" value="true" />
         </javaClientGenerator>
-        <table tableName="menu" ></table>
-        <table tableName="user" ></table>
 
 
+        <table tableName="products" enableCountByExample="false"
+        enableUpdateByExample="false" enableDeleteByExample="false"
+        enableSelectByExample="false" selectByExampleQueryId="false">
+        </table>
         <!--
         <table tableName="appusers" ></table>
             <table tableName="appversion" ></table>
