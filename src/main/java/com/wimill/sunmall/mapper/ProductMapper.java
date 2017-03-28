@@ -1,15 +1,8 @@
 package com.wimill.sunmall.mapper;
 
 import com.wimill.sunmall.model.Product;
-import org.apache.ibatis.annotations.Mapper;
-import org.apache.ibatis.annotations.Select;
+import com.wimill.sunmall.mapper.BaseMapper;
 
-/**
- * Created by showntop on 2017/3/19.
- */
-@Mapper
-public interface ProductMapper {
-
-    @Select("SELECT * FROM products WHERE id = #{id}")
-    Product find(long id);
+public interface ProductMapper extends BaseMapper<Product, Integer>{
+   
 }
