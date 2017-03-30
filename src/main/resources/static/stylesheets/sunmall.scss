@@ -1,8 +1,11 @@
-@require 'jquery-ui.min.css';
-@require 'jquery-ui.theme.min.css';
-/*@require 'jquery-ui/autocomplete';
+@import 'jquery-ui.min.css';
+@import 'jquery-ui.theme.min.css';
+/*@import 'jquery-ui/autocomplete';
 */
-@require 'select2';
-@require 'animate';
-@require 'spree/backend/spree_admin';
+@import 'bootstrap-sprockets';
+@import 'bootstrap';
+
+@import 'select2';
+@import 'animate';
+@import 'spree/spree_admin';
 

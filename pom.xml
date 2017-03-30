@@ -88,8 +88,8 @@
                         </execution>
                     </executions>
                     <configuration>
-                        <inputPath>/home/xiaorongtao/1018/wimill/sunmall/src/main/resources/static/stylesheets/</inputPath>
-                        <outputPath>/home/xiaorongtao/1018/wimill/sunmall/target/classes/static/stylesheets/</outputPath>
+                        <inputPath>src/main/resources/static/stylesheets/</inputPath>
+                        <outputPath>target/classes/static/stylesheets/</outputPath>
                         <outputStyle>compressed</outputStyle>
                         <generateSourceMap>false</generateSourceMap>
                     </configuration>
