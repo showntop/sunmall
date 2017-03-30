@@ -1,21 +1,51 @@
 <header class="header logged-in" th:fragment="header">
 
-  <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
-    <div class="container-fluid">
-      <div class="row">
-        <div class="navbar-header col-sm-3 col-md-2">
-            <a href="/" class="logo navbar-brand"></a>
-            <span class="navbar-toggle" id="sidebar-toggle">
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-              <span class="icon-bar"></span>
-            </span>
-        </div>
-        <div class="col-sm-9 col-md-10">
-          <div class="navbar-right" data-hook="admin_login_navigation_bar"></div>
+      <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation"><div class="container-fluid">
+        <div class="row">
+          <div class="navbar-header col-sm-3 col-md-2">
+            <a class="logo navbar-brand" href="/admin"><img id="logo" src="/assets/admin/logo-80200db37ace2294842fdb8cadf550b3681426b5551d89ad8fc4c0a53249d729.png" alt="Logo" /></a><span class="navbar-toggle" id="sidebar-toggle">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+              </span>
+          </div>
+          <div class="col-sm-9 col-md-10">
+            <div class="navbar-right" data-hook="admin_login_navigation_bar">
+
+    <ul class="nav navbar-nav">
+      <li class="dropdown user user-menu">
+        <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+          <i class="glyphicon glyphicon-user"></i>
+          <span>spree@example.com <i class="caret"></i></span>
+        </a>
+        <ul class="dropdown-menu">
+          <li class="user-header bg-light-blue">
+            <p>
+              spree@example.com
+            </p>
+          </li>
+            <li class="user-body">
+              <div class="col-xs-12 text-center" data-hook="store-frontend-link">
+                <a target="_blank" href="/">Go Back To Store</a>
+              </div>
+            </li>
+
+          <li class="user-footer" id="login-nav">
+            <div class="pull-left" data-hook="user-account-link">
+              <a class="btn btn-default btn-flat" href="/users/1/edit">Account</a>
+            </div>
+            <div class="pull-right" data-hook="user-logout-link">
+              <a class="btn btn-default btn-flat" href="/admin/logout">Logout</a>
+            </div>
+          </li>
+        </ul>
+      </li>
+    </ul>
+
+  </div>
+          </div>
         </div>
       </div>
-    </div>
-  </nav>
+    </nav>
 
 </header>

@@ -74,6 +74,27 @@
 				<artifactId>spring-boot-maven-plugin</artifactId>
 			</plugin>
 
+
+                <plugin>
+                    <groupId>com.github.warmuuh</groupId>
+                    <artifactId>libsass-maven-plugin</artifactId>
+                    <version>0.2.2-libsass_3.3.3</version>
+                    <executions>
+                        <execution>
+                            <phase>generate-resources</phase>
+                            <goals>
+                                <goal>compile</goal>
+                            </goals>
+                        </execution>
+                    </executions>
+                    <configuration>
+                        <inputPath>/home/xiaorongtao/1018/wimill/sunmall/src/main/resources/static/stylesheets/</inputPath>
+                        <outputPath>/home/xiaorongtao/1018/wimill/sunmall/target/classes/static/stylesheets/</outputPath>
+                        <outputStyle>compressed</outputStyle>
+                        <generateSourceMap>false</generateSourceMap>
+                    </configuration>
+                </plugin>
+
             <plugin>
                 <groupId>org.mybatis.generator</groupId>
                 <artifactId>mybatis-generator-maven-plugin</artifactId>
@@ -121,7 +142,5 @@
 
         </plugins>
 	</build>
-
-
 </project>
 

@@ -1,0 +1,175 @@
+   <div class="filter-wrap row">
+
+    <div class="col-sm-12">
+
+<div class="input-group index-filter-button">
+        <span class="input-group-btn">
+          <button class="btn btn-default js-show-index-filters" type="button">
+            <span class="icon icon-chevron-right"></span>
+            Filter
+          </button>
+        </span>
+        <form id="quick-search" action="/admin/orders" accept-charset="UTF-8" method="post"><input name="utf8" type="hidden" value="&#x2713;" /><input type="hidden" name="authenticity_token" value="/Up7DG2DNzhGgQ9T2uT+tJyba9Aoe6vJgsK4wts9TFLStjL/YNV9WxxdenlucwjyBmG0pm3703F5TH68Eng82g==" />
+          <input type="text" name="quick_search" id="quick_search" class="form-control js-quick-search" placeholder="Quick search.." />
+</form>      </div>
+
+        <div id="table-filter" data-hook class="well filter-well">
+            <div data-hook="admin_orders_index_search">
+
+    <form class="spree/order_search" id="spree/order_search" action="/admin/orders" accept-charset="UTF-8" method="get"><input name="utf8" type="hidden" value="&#x2713;" />
+      <div class="row">
+        <div class="date-range-filter col-md-8">
+          <div class="form-group">
+            <label for="q_created_at_gt">Date Range</label>
+            <div class="row no-padding-bottom">
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input class="datepicker datepicker-from form-control" placeholder="Start" type="text" name="q[created_at_gt]" id="q_created_at_gt" />
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+
+              </div>
+              <div class="col-md-6">
+                <div class="input-group">
+                  <input class="datepicker datepicker-to form-control" placeholder="Stop" type="text" name="q[created_at_lt]" id="q_created_at_lt" />
+                  <span class="input-group-addon">
+                    <i class="icon icon-calendar"></i>
+                  </span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_number_cont">Order </label>
+            <input class="form-control js-quick-search-target" type="text" name="q[number_cont]" id="q_number_cont" />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_state_eq">Status</label>
+            <select class="select2 js-filterable" name="q[state_eq]" id="q_state_eq"><option value=""></option>
+<option value="cart">cart</option>
+<option value="address">address</option>
+<option value="delivery">delivery</option>
+<option value="payment">payment</option>
+<option value="confirm">confirm</option>
+<option value="complete">complete</option>
+<option value="canceled">canceled</option>
+<option value="awaiting_return">awaiting return</option>
+<option value="resumed">resumed</option>
+<option value="returned">returned</option></select>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_payment_state_eq">Payment State</label>
+            <select class="select2 js-filterable" name="q[payment_state_eq]" id="q_payment_state_eq"><option value=""></option>
+<option value="balance_due">balance due</option>
+<option value="credit_owed">credit owed</option>
+<option value="failed">failed</option>
+<option value="paid">paid</option>
+<option value="void">void</option></select>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_shipment_state_eq">Shipment State</label>
+            <select class="select2 js-filterable" name="q[shipment_state_eq]" id="q_shipment_state_eq"><option value=""></option>
+<option value="backorder">backorder</option>
+<option value="canceled">canceled</option>
+<option value="partial">partial</option>
+<option value="pending">pending</option>
+<option value="ready">ready</option>
+<option value="shipped">shipped</option></select>
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_bill_address_firstname_start">First Name Begins With</label>
+            <input class="form-control" type="text" name="q[bill_address_firstname_start]" id="q_bill_address_firstname_start" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_bill_address_lastname_start">Last Name Begins With</label>
+            <input class="form-control" type="text" name="q[bill_address_lastname_start]" id="q_bill_address_lastname_start" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_email_cont">Email</label>
+            <input class="form-control js-filterable" type="text" name="q[email_cont]" id="q_email_cont" />
+          </div>
+        </div>
+
+      </div>
+
+      <div class="row">
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_line_items_variant_sku_eq">SKU</label>
+            <input class="form-control" type="text" name="q[line_items_variant_sku_eq]" id="q_line_items_variant_sku_eq" />
+          </div>
+        </div>
+
+        <div class="col-md-4">
+          <div class="form-group">
+            <label for="q_promotions_id_in">Promotion</label>
+            <select class="select2" name="q[promotions_id_in]" id="q_promotions_id_in"><option value=""></option>
+</select>
+          </div>
+        </div>
+
+        <div class="col-md-4">
+
+          <div class="form-group">
+
+            <div class="checkbox">
+              <label for="q_completed_at_not_null">
+                <input name="q[completed_at_not_null]" type="hidden" value="0" /><input type="checkbox" value="1" checked="checked" name="q[completed_at_not_null]" id="q_completed_at_not_null" />
+                Only show complete orders
+</label>            </div>
+
+            <div class="checkbox">
+              <label for="q_considered_risky_eq">
+                <input name="q[considered_risky_eq]" type="hidden" value="" /><input type="checkbox" value="1" name="q[considered_risky_eq]" id="q_considered_risky_eq" />
+                Only show risky orders
+</label>            </div>
+
+          </div>
+
+        </div>
+
+      </div>
+
+      <div data-hook="admin_orders_index_search_buttons" class="form-actions">
+        <button name="button" type="submit" class="btn btn-primary " data-disable-with="Saving..."><span class="icon icon-search"></span> Filter Results</button>
+      </div>
+
+</form>
+  </div>
+
+
+        </div>
+            </div>
+</div>
