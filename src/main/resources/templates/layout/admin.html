@@ -28,7 +28,11 @@
           <div th:replace="fragments/content_header :: content_header"></div>
           <div class="row">
             <div class="col-sm-12" id="content" data-hook="">
-               content put here
+               <th:block layout:fragment="content">
+                <div>
+                  put content here!
+                </div>
+              </th:block>
             </div>
           </div>
         </div>

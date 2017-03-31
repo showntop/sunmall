@@ -29,6 +29,12 @@ public abstract class BaseServiceImpl<T extends Entity>
 
 
     @Transactional(readOnly = true)
+    public T findAll() {
+        return getDao().selectByPrimaryKey(id);
+    }
+
+
+    @Transactional(readOnly = true)
     public T findOne(Integer id) {
         Assert.notNull(id);
         return getDao().selectByPrimaryKey(id);

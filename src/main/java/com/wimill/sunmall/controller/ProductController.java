@@ -18,8 +18,8 @@ public class ProductController {
 	private ProductService productService;
 
 	@ResponseBody
-	@RequestMapping("/user")
-	public Object get(@RequestParam Integer id){
+	@RequestMapping("/admin/products")
+	public Object get(HttpServletRequest request , @Valid String q, Model model){
 	    return productService.findOne(id);
 	}
 }
