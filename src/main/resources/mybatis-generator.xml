@@ -4,11 +4,14 @@
         "http://mybatis.org/dtd/mybatis-generator-config_1_0.dtd">
 
 <generatorConfiguration>
+    <properties resource="application.properties"/>
 
-    <context id="DB2Tables" targetRuntime="MyBatis3" defaultModelType="flat">
-        <plugin type="org.mybatis.generator.plugins.RenameExampleClassPlugin">
-            <property name="searchString" value="[e|E]xample$" />
-            <property name="replaceString" value="Criteria" />
+    <context id="Postgresql" targetRuntime="MyBatis3Simple" defaultModelType="flat">
+        <property name="beginningDelimiter" value="`"/>
+        <property name="endingDelimiter" value="`"/>
+
+        <plugin type="tk.mybatis.mapper.generator.MapperPlugin">
+            <property name="mappers" value="com.wimill.sunmall.mapper.MyMapper"/>
         </plugin>
 
         <commentGenerator>
@@ -16,12 +19,13 @@
             <property name="suppressAllComments" value="true" />
         </commentGenerator>
 
-        <jdbcConnection driverClass="org.postgresql.Driver"
-                        connectionURL="jdbc:postgresql://localhost:60008/sunmall_development" userId="xiaorongtao"
-                        password="">
+        <jdbcConnection driverClass="${spring.datasource.driver-class-name}"
+                        connectionURL="${spring.datasource.url}"
+                        userId="${spring.datasource.username}"
+                        password="${spring.datasource.password}">
         </jdbcConnection>
-
-        <javaTypeResolver>
+        
+         <javaTypeResolver>
             <property name="forceBigDecimals" value="false" />
         </javaTypeResolver>
 
@@ -32,9 +36,7 @@
             <property name="trimStrings" value="true" />
         </javaModelGenerator>
 
-
-
-        <!-- 自动生成xml（但是好像一直没有生成功，反正也不用xml） -->
+        <!-- 自动生成xml -->
         <sqlMapGenerator  targetPackage="mybatis"
                           targetProject="/home/xiaorongtao/1018/wimill/sunmall/src/main/resources">
             <property name="enableSubPackages" value="false" />
@@ -51,22 +53,6 @@
         enableUpdateByExample="false" enableDeleteByExample="false"
         enableSelectByExample="false" selectByExampleQueryId="false">
         </table>
-        <!--
-        <table tableName="appusers" ></table>
-            <table tableName="appversion" ></table>
-            <table tableName="commend" ></table>
-            <table tableName="userlog" domainObjectName="UserLog"></table>
-            <table tableName="users" domainObjectName="Users"></table>
-        <table tableName="css" domainObjectName="Css">
-            </table>
-            <table tableName="res" domainObjectName="Res">
-            </table>
-            <table tableName="res_link" domainObjectName="ResLink">
-            </table>
-            <table tableName="alert" domainObjectName="Alert">
-            </table>
-            <table tableName="alertType" domainObjectName="AlertType">
-            </table> -->
 
     </context>
 </generatorConfiguration>

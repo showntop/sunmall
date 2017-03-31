@@ -7,19 +7,22 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import com.github.pagehelper.PageInfo;
 
+import java.util.List;
 /**
  * Created by showntop on 2017/3/19.
  */
 @Controller
+@RequestMapping("/admin/products")
 public class ProductController {
 
 	@Autowired
 	private ProductService productService;
 
-	@ResponseBody
-	@RequestMapping("/admin/products")
-	public Object get(HttpServletRequest request , @Valid String q, Model model){
-	    return productService.findOne(id);
-	}
+    @RequestMapping
+    public PageInfo<Product> getAll(Product product) {
+        List<Product> countryList = productService.getAll(product);
+        return new PageInfo<Product>(countryList);
+    }
 }

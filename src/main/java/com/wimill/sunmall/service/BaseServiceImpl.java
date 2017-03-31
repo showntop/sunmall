@@ -6,15 +6,15 @@ import java.lang.reflect.Type;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.util.Assert;
 
-import com.wimill.sunmall.mapper.BaseMapper;
+import com.wimill.sunmall.mapper.MyMapper;
 import com.wimill.sunmall.model.Entity;
 import com.wimill.sunmall.service.BaseService;
 
 @Transactional
-public abstract class BaseServiceImpl<T extends Entity>
+public abstract class BaseServiceImpl<T>
         implements BaseService<T> {
 
-    protected abstract BaseMapper<T,  Integer> getDao();
+    protected abstract MyMapper<T> getMapper();
 
     protected Class<T> entityClazz;
 
@@ -30,14 +30,14 @@ public abstract class BaseServiceImpl<T extends Entity>
 
     @Transactional(readOnly = true)
     public T findAll() {
-        return getDao().selectByPrimaryKey(id);
+        return null;
     }
 
 
     @Transactional(readOnly = true)
     public T findOne(Integer id) {
         Assert.notNull(id);
-        return getDao().selectByPrimaryKey(id);
+        return getMapper().selectByPrimaryKey(id);
     }
 
 
