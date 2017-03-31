@@ -8,12 +8,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 import com.github.pagehelper.PageInfo;
+import org.springframework.web.bind.annotation.RestController;
 
 import java.util.List;
 /**
  * Created by showntop on 2017/3/19.
  */
-@Controller
+@RestController
 @RequestMapping("/admin/products")
 public class ProductController {
 
