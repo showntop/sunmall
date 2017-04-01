@@ -1,13 +1,174 @@
 <!DOCTYPE html>
-<html xmlns:th="http://www.thymeleaf.org"
-      xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout"
-      layout:decorator="layout/admin">
-  <body>
-    <!-- Insert content into the layouts/layout.html -->
-    <th:block layout:fragment="content">
-      <div>
-        i'm products page!
-      </div>
-    </th:block>
-  </body>
+<html xmlns:th="http://www.thymeleaf.org" xmlns:layout="http://www.ultraq.net.nz/thymeleaf/layout" layout:decorator="layout/admin">
+
+<body>
+<!-- Insert content into the layouts/layout.html -->
+<th:block layout:fragment="content">
+    <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-part">
+        <div class="content-header  page-header">
+            <div class="row">
+                <h1 class="col-sm-6">Products</h1>
+                <div class="page-actions col-sm-6" data-hook="toolbar">
+                    <a class="btn btn-success" icon="add" id="admin_new_product" href="http://127.0.0.1:3000/admin/products/new">
+                        <span class="icon icon-add"></span>New Product</a>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+            <div class="col-sm-12" id="content" data-hook="">
+                <div class="filter-wrap row">
+                    <div class="col-sm-12">
+                        <div class="input-group index-filter-button">
+                  <span class="input-group-btn">
+                    <button class="btn btn-default js-show-index-filters" type="button">
+                      <span class="icon icon-chevron-right"></span>Filter</button>
+                  </span>
+                            <form id="quick-search" action="/admin/products" accept-charset="UTF-8" method="post">
+                                <input name="utf8" type="hidden" value="✓"/>
+                                <input type="hidden" name="authenticity_token" value="QSTHaW4Ux3s8+O5nNj+DaDPaMPwD2SM7ZTUmIyqGJjuBlS02JCGc2FIMggy7QtllOW6871FQMomQXmQ40ExaQw=="/>
+                                <input type="text" name="quick_search" id="quick_search" class="form-control js-quick-search" placeholder="Quick search.."/>
+                            </form>
+                        </div>
+                        <div id="table-filter" data-hook="" class="well filter-well">
+                            <div data-hook="admin_products_sidebar">
+                                <form class="spree/product_search" id="spree/product_search" action="/admin/products" accept-charset="UTF-8" method="get">
+                                    <input name="utf8" type="hidden" value="✓"/>
+                                    <div data-hook="admin_products_index_search" class="row">
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="q_name_cont">Name</label>
+                                                <input size="15" class="form-control js-quick-search-target" type="text" name="q[name_cont]" id="q_name_cont"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-6">
+                                            <div class="form-group">
+                                                <label for="q_variants_including_master_sku_cont">SKU</label>
+                                                <input size="15" class="form-control" type="text" name="q[variants_including_master_sku_cont]" id="q_variants_including_master_sku_cont"/>
+                                            </div>
+                                        </div>
+                                        <div class="col-md-12">
+                                            <div class="field checkbox">
+                                                <label>
+                                                    <input name="q[deleted_at_null]" type="hidden" value="1"/>
+                                                    <input type="checkbox" value="0" name="q[deleted_at_null]" id="q_deleted_at_null"/>
+                                                </label>
+                                            </div>
+                                            <div class="field checkbox">
+                                                <label>
+                                                    <input name="q[not_discontinued]" type="hidden" value="1"/>
+                                                    <input type="checkbox" value="0" name="q[not_discontinued]" id="q_not_discontinued"/>Show Discontinued
+                                                </label>
+                                            </div>
+                                        </div>
+                                    </div>
+                                    <div data-hook="admin_products_index_search_buttons" class="form-actions">
+                                        <button name="button" type="submit" class="btn btn-primary " data-disable-with="Saving...">
+                                            <span class="icon icon-search"></span>Search</button>
+                                    </div>
+                                    <input type="hidden" name="per_page" value="25"/>
+                                </form>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="table-active-filters js-filters"></div>
+                <div class="row index-pagination-row">
+                    <div class="col-sm-6">
+                        <ul class="pagination pagination-sm">
+                            <li class="previous disabled">
+                                <a href="javascript:;">«</a></li>
+                            <li class="active">
+                                <a href="/admin/products?q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc">1</a></li>
+                            <li class="">
+                                <a rel="next" href="/admin/products?page=2&amp;q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc">2</a></li>
+                            <li class="next ">
+                                <a rel="next" href="/admin/products?page=2&amp;q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc">»</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="pagination-wrap">
+                            <form class="js-per-page-form form-inline" action="/admin/products?q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc" accept-charset="UTF-8" method="get">
+                                <input name="utf8" type="hidden" value="✓"/>
+                                <select name="per_page" id="per_page" class="form-control pull-right js-per-page-select per-page-selected-25">
+                                    <option selected="selected" value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="75">75</option>
+                                    <option value="100">100</option>
+                                    <option value="125">125</option></select>
+                            </form>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table" id="listing_products">
+                    <thead>
+                        <tr data-hook="admin_products_index_headers">
+                            <th>SKU</th>
+                            <th>Status</th>
+                            <th colspan="2">
+                                <a title="admin_products_listing_name_title" class="sort_link asc" href="/admin/products?q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+desc">Name
+                                    <span class="icon icon-chevron-up"></span></a>
+                            </th>
+                            <th class="text-center">
+                                <a title="admin_products_listing_price_title" class="sort_link " href="/admin/products?q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=master_default_price_amount+asc">Master Price</a></th>
+                            <th data-hook="admin_products_index_header_actions" class="actions"></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr th:each="product : ${pageInfo.list }">
+                            <td th:text="${product.id}">product.id</td>
+                            <td th:text="${product.name}">product.name</td>
+                            <td th:text="${product.description}">product.description</td>
+                            <td class="actions actions-3 text-right" data-hook="admin_products_index_row_actions">
+                                <a class="btn btn-primary btn-sm icon-link with-tip action-edit no-text" data-action="edit" title="" href="http://127.0.0.1:3000/admin/products/11111111/edit" data-original-title="Edit">
+                                    <span class="icon icon-edit"></span>
+                                </a>
+                                <form class="display-inline" action="http://127.0.0.1:3000/admin/products/11111111/clone" accept-charset="UTF-8" method="post">
+                                    <input name="utf8" type="hidden" value="✓"/>
+                                    <input type="hidden" name="authenticity_token" value="QSTHaW4Ux3s8+O5nNj+DaDPaMPwD2SM7ZTUmIyqGJjuBlS02JCGc2FIMggy7QtllOW6871FQMomQXmQ40ExaQw=="/>
+                                    <button name="button" no_text="true" class="btn btn-primary btn btn-primary btn-sm with-tip" data-disable-with="Saving..." data-original-title="" title="">
+                                        <span class="icon icon-clone"></span>
+                                    </button>
+                                </form>
+                                <a class="btn btn-danger btn-sm delete-resource icon-link with-tip action-delete no-text" data-confirm="Are you sure?" data-action="remove" title="" href="http://127.0.0.1:3000/admin/products/11111111" data-original-title="Delete">
+                                    <span class="icon icon-delete"></span>
+                                </a>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <div class="row index-pagination-row">
+                    <div class="col-sm-6">
+                        <ul class="pagination pagination-sm">
+                            <li class="previous disabled">
+                                <a href="javascript:;">«</a></li>
+                            <li class="active">
+                                <a href="/admin/products?q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc">1</a></li>
+                            <li class="">
+                                <a rel="next" href="/admin/products?page=2&amp;q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc">2</a></li>
+                            <li class="next ">
+                                <a rel="next" href="/admin/products?page=2&amp;q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc">»</a></li>
+                        </ul>
+                    </div>
+                    <div class="col-sm-6">
+                        <div class="pagination-wrap">
+                            <form class="js-per-page-form form-inline" action="/admin/products?q%5Bdeleted_at_null%5D=1&amp;q%5Bnot_discontinued%5D=1&amp;q%5Bs%5D=name+asc" accept-charset="UTF-8" method="get">
+                                <input name="utf8" type="hidden" value="✓"/>
+                                <select name="per_page" id="per_page" class="form-control pull-right js-per-page-select per-page-selected-25">
+                                    <option selected="selected" value="25">25</option>
+                                    <option value="50">50</option>
+                                    <option value="75">75</option>
+                                    <option value="100">100</option>
+                                    <option value="125">125</option></select>
+                            </form>
+                            <div class="clearfix"></div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</th:block>
+</body>
+
 </html>

@@ -23,19 +23,11 @@
         <div class="col-sm-3 col-md-2 hidden-xs sidebar" id="main-sidebar" data-hook="admin_tabs" th:include="fragments/main_menu :: main_menu">
           our main menu
         </div>
-
-        <div class="col-sm-9 col-sm-offset-3 col-md-10 col-md-offset-2 main" id="main-part">
-          <div th:replace="fragments/content_header :: content_header"></div>
-          <div class="row">
-            <div class="col-sm-12" id="content" data-hook="">
-               <th:block layout:fragment="content">
-                <div>
-                  put content here!
-                </div>
-              </th:block>
+          <th:block layout:fragment="content">
+            <div>
+              put content here!
             </div>
-          </div>
-        </div>
+          </th:block>
       </div>
     </div>
 
